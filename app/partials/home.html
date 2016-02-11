@@ -1,0 +1,32 @@
+<div class="panel-heading">
+    <h3 class="panel-title">List d'objets.</h3>
+</div>
+<div class="panel-body main-panel">
+    <a href="#/newproject">Create project</a>
+    <div>
+        <table class="table table-striped">
+            <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>USER</th>
+                <th>DESCRIPTION</th>
+                <th>GOAL</th>
+            </tr>
+
+            <tr ng-repeat = "tp in projects">
+                <td>{{ tp.id }}</td>
+                <td>{{ tp.name }}</td>
+                <td>{{ tp.user }}</td>
+                <td>{{ tp.description }}</td>
+                <td>{{ tp.goal }}</td>
+                <td>
+                    <a type="button" ng-click="edit(tp)" class="btn btn-success custom-width">Edit</a>
+                </td>
+                <td>
+                    <a type="button" ng-click="remove(tp)" class="btn btn-danger custom-width">Remove</a>
+                </td>
+
+            </tr>
+        </table>
+    </div>
+</div>

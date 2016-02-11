@@ -1,0 +1,56 @@
+<div class="panel-heading">
+    <h3 class="panel-title">Create a new user.</h3>
+</div>
+<div class="panel-body main-panel">
+<form class="form-horizontal" name="registerForm" novalidate>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="nomprojet">Nom du projet</label>
+        <div class="col-md-4">
+            <input placeholder="Project Name (max 20 char.)" type="input" class="form-control"
+                   name="name" ng-model="project.name" ng-maxlength="20" required/>
+        </div>
+    </div>
+    <span ng-show="registerForm.nomprojet.$error.maxlength" >project name length sould be less than 20 character</span>
+
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="email">Email du propriétaire</label>
+        <div class="col-md-4">
+            <input type="email" class="form-control" name="user" ng-model="project.user" required />
+        </div>
+    </div>
+
+    <div ng-messages="registerForm.email.$error" ng-show="registerForm.email.$dirty" >
+        <div ng-message="required">
+            You forgot to enter your email address...
+        </div>
+        <div ng-message="email">
+            You did not enter your email address correctly...
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="descriptionprojet">Description du projet</label>
+        <div class="col-md-4">
+            <textarea rows="4"  class="form-control" name="descriptionprojet"
+                      ng-model="project.description" value="" required></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="montant">Montant demandé pour le projet</label>
+        <div class="col-md-4">
+            <input placeholder="Amount to reach (max 1000)" type="number" class="form-control" name="goal"
+                   ng-model="project.goal" min="0" max="1000" integer  required>
+
+        </div>
+        <span ng-show="registerForm.goal.$error.number">Amount should be a number !</span>
+                        <span ng-show="registerForm.goal.$error.min || registerForm.goal.$error.max">
+                                  Amount should be less than 1000 (and positive)</span>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-3 col-md-9">
+            <input ng-disabled="registerForm.$invalid" ng-click="addProject(project)" class="btn btn-small btn-primary" type="submit"/>
+        </div>
+    </div>
+</form>
+</div>
